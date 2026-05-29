@@ -1,0 +1,2036 @@
+<!DOCTYPE html>
+<!-- NOMBRE PROVISIONAL: reemplazar "Clínica de Dermatología y Cosmetología" y "[ Nombre comercial por confirmar ]" por el nombre real cuando Juan lo confirme -->
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sistema operativo de clínica · EnLínea Solutions</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --teal: #7fd3c2;
+    --teal-dark: #5ec4ac;
+    --orange: #f59e0b;
+    --dark: #050508;
+    --dark-card: #0d0d14;
+    --dark-surface: #14141f;
+    --dark-elevated: #1a1a26;
+    --border: rgba(255, 255, 255, 0.08);
+    --border-bright: rgba(255, 255, 255, 0.14);
+    --text: #eeeef2;
+    --text-muted: #9a9ab0;
+    --text-dim: #65657a;
+    --max: 1180px;
+  }
+
+  html, body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: #050508;
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    background: #050508;
+    background-attachment: fixed;
+    min-height: 100vh;
+    position: relative;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(127, 211, 194, 0.018) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(127, 211, 194, 0.018) 1px, transparent 1px);
+    background-size: 56px 56px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 56px;
+    position: relative;
+    z-index: 1;
+  }
+
+  section {
+    padding: 100px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  section:last-child { border-bottom: none; }
+
+  section.hero {
+    padding: 56px 0 110px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* TOP BAR */
+  .top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 56px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+  .top-bar .left img {
+    height: 22px;
+    width: auto;
+    filter: brightness(0) invert(1);
+    opacity: 0.85;
+    vertical-align: middle;
+    margin-right: 14px;
+  }
+
+  .top-bar .left span { color: var(--text-muted); font-weight: 500; }
+  .top-bar .right { color: var(--teal); font-weight: 600; }
+
+  /* HERO */
+  .hero-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 96px;
+  }
+
+  .hero-header .logo-wrap { display: flex; align-items: center; }
+
+  .hero-header .logo-wrap img {
+    height: 64px;
+    width: auto;
+    filter: brightness(0) invert(1);
+    opacity: 0.92;
+  }
+
+  .hero-header .doc-meta {
+    text-align: right;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    line-height: 1.7;
+  }
+
+  .hero-header .doc-meta .label {
+    color: var(--teal);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 11px;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  .hero-header .doc-meta .value {
+    color: var(--text);
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    letter-spacing: 0;
+  }
+
+  .hero-tag {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--teal);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 8px 18px;
+    border: 1px solid rgba(127, 211, 194, 0.35);
+    border-radius: 100px;
+    margin-bottom: 36px;
+    background: rgba(127, 211, 194, 0.04);
+    font-weight: 600;
+  }
+
+  .hero h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 72px;
+    font-weight: 700;
+    line-height: 1.04;
+    color: var(--text);
+    letter-spacing: -2.2px;
+    margin-bottom: 32px;
+    max-width: 16ch;
+  }
+
+  .hero h1 .accent {
+    color: var(--teal);
+  }
+
+  .hero p.sub {
+    font-size: 21px;
+    color: var(--text-muted);
+    line-height: 1.5;
+    max-width: 780px;
+    font-weight: 300;
+    margin-bottom: 56px;
+  }
+
+  .hero .for-block {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+
+  .hero .for-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 34px;
+    color: var(--text);
+    font-weight: 600;
+    letter-spacing: -1px;
+  }
+
+  .hero .for-confirm {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 1px;
+    margin-top: 8px;
+  }
+
+  .hero-meta-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 28px;
+    margin-top: 72px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+  }
+
+  .hero-meta-grid .col .k {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--teal);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+
+  .hero-meta-grid .col .v {
+    font-size: 15px;
+    color: var(--text);
+    font-weight: 500;
+    line-height: 1.5;
+  }
+
+  /* SECTION HEADERS */
+  .sec-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--teal);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 18px;
+    display: inline-block;
+    font-weight: 600;
+  }
+
+  h2.sec-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 46px;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -1.4px;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    max-width: 20ch;
+  }
+
+  h2.sec-title .em { color: var(--teal); }
+
+  p.lede {
+    font-size: 18px;
+    color: var(--text-muted);
+    line-height: 1.55;
+    max-width: 820px;
+    margin-bottom: 56px;
+    font-weight: 300;
+  }
+
+  /* DIAGNOSIS */
+  .diag-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+
+  .diag-card {
+    background: var(--dark-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px 28px;
+    position: relative;
+    transition: border-color 0.2s;
+  }
+
+  .diag-card:hover { border-color: rgba(127, 211, 194, 0.3); }
+
+  .diag-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 24px;
+    bottom: 24px;
+    width: 3px;
+    background: var(--teal);
+    border-radius: 0 3px 3px 0;
+  }
+
+  .diag-card .num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--teal);
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+
+  .diag-card h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 8px;
+    letter-spacing: -0.3px;
+  }
+
+  .diag-card p { font-size: 14.5px; color: var(--text-muted); line-height: 1.55; }
+
+  .diag-footer {
+    margin-top: 28px;
+    padding: 22px 28px;
+    background: rgba(127, 211, 194, 0.05);
+    border-left: 3px solid var(--teal);
+    border-radius: 6px;
+    font-size: 15px;
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  .diag-footer strong { color: var(--teal); font-weight: 600; }
+
+  /* COMPARE (complemento vs reemplazo) */
+  .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+
+  .compare-col {
+    background: var(--dark-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 30px 32px;
+  }
+
+  .compare-col.add {
+    border-color: rgba(127, 211, 194, 0.4);
+    background: rgba(127, 211, 194, 0.06);
+  }
+
+  .compare-col .ctag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--text-dim);
+  }
+
+  .compare-col.add .ctag { color: var(--teal); }
+
+  .compare-col h4 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: -0.4px;
+    margin-bottom: 20px;
+  }
+
+  .compare-col ul { list-style: none; }
+
+  .compare-col li {
+    font-size: 14.5px;
+    color: var(--text-muted);
+    padding: 9px 0 9px 26px;
+    position: relative;
+    line-height: 1.5;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .compare-col li:last-child { border-bottom: none; }
+
+  .compare-col li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--text-dim);
+    font-weight: 700;
+    font-size: 13px;
+  }
+
+  .compare-col.add li::before { content: '+'; color: var(--teal); font-size: 16px; top: 7px; }
+
+  /* PILLARS */
+  .components-grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
+
+  .component {
+    background: var(--dark-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px 28px;
+    display: grid;
+    grid-template-columns: 70px 1fr;
+    gap: 24px;
+    transition: border-color 0.2s;
+  }
+
+  .component:hover { border-color: rgba(127, 211, 194, 0.3); }
+
+  .component .num-box {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--teal);
+    letter-spacing: -1px;
+    line-height: 1;
+    padding-top: 4px;
+  }
+
+  .component .body h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 19px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 8px;
+    letter-spacing: -0.3px;
+  }
+
+  .component .body p { font-size: 15px; color: var(--text-muted); line-height: 1.6; }
+
+  .component .detail {
+    margin-top: 12px;
+    font-size: 13.5px;
+    color: var(--text-muted);
+    background: rgba(127, 211, 194, 0.04);
+    border-left: 2px solid var(--teal);
+    padding: 10px 14px;
+    border-radius: 0 6px 6px 0;
+    line-height: 1.55;
+  }
+
+  .component .detail.warn {
+    background: rgba(245, 158, 11, 0.05);
+    border-left-color: var(--orange);
+  }
+
+  /* SERVICE CHIPS */
+  .svc-block { margin-top: 28px; }
+
+  .svc-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 14px;
+  }
+
+  .svc-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+
+  .chip {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11.5px;
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 7px 14px;
+    background: var(--dark-elevated);
+  }
+
+  .chip b { color: var(--teal); font-weight: 600; }
+
+  .fase-plus {
+    margin-top: 28px;
+    background: var(--dark-card);
+    border: 1px solid rgba(245, 158, 11, 0.25);
+    border-radius: 14px;
+    padding: 28px 32px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .fase-plus::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--orange);
+  }
+
+  .fase-plus .tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--orange);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    font-weight: 600;
+  }
+
+  .fase-plus h4 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 10px;
+    letter-spacing: -0.3px;
+  }
+
+  .fase-plus p { font-size: 15px; color: var(--text-muted); line-height: 1.6; }
+
+  /* MOCKUP DASHBOARD */
+  .mockup-frame {
+    background: var(--dark-card);
+    border: 1px solid var(--border-bright);
+    border-radius: 18px;
+    padding: 0;
+    overflow: hidden;
+    margin-top: 8px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  }
+
+  .mockup-titlebar {
+    background: var(--dark-elevated);
+    padding: 12px 18px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .mockup-dots { display: flex; gap: 6px; }
+  .mockup-dot { width: 11px; height: 11px; border-radius: 50%; background: rgba(255, 255, 255, 0.18); }
+  .mockup-dot:nth-child(1) { background: #ff5f56; }
+  .mockup-dot:nth-child(2) { background: #ffbd2e; }
+  .mockup-dot:nth-child(3) { background: #27c93f; }
+
+  .mockup-url {
+    flex: 1;
+    text-align: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 1px;
+  }
+
+  .mockup-body {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    min-height: 560px;
+  }
+
+  .mockup-sidebar {
+    background: var(--dark);
+    border-right: 1px solid var(--border);
+    padding: 24px 16px;
+  }
+
+  .mockup-brand {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--teal);
+    letter-spacing: -0.5px;
+    padding: 0 8px 24px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 20px;
+  }
+
+  .mockup-nav-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: var(--text-dim);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 16px 8px 6px;
+    font-weight: 600;
+  }
+
+  .mockup-nav-item {
+    padding: 9px 12px;
+    border-radius: 7px;
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 2px;
+    transition: background 0.15s;
+  }
+
+  .mockup-nav-item.active {
+    background: rgba(127, 211, 194, 0.12);
+    color: var(--teal);
+    font-weight: 600;
+  }
+
+  .mockup-main { padding: 26px 32px; }
+
+  .mockup-topline {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 24px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .mockup-page-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.5px;
+  }
+
+  .mockup-page-sub {
+    font-size: 12px;
+    color: var(--text-dim);
+    margin-top: 4px;
+  }
+
+  .mockup-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text-muted);
+    background: var(--dark-elevated);
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+  }
+
+  .mockup-kpis {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  .mockup-kpi {
+    background: var(--dark-elevated);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 18px;
+  }
+
+  .mockup-kpi .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: var(--text-dim);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+
+  .mockup-kpi .value {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.5px;
+    line-height: 1;
+  }
+
+  .mockup-kpi .value.txt { font-size: 19px; }
+
+  .mockup-kpi .currency { font-size: 14px; color: var(--text-muted); margin-right: 2px; }
+
+  .mockup-kpi .delta {
+    font-size: 10px;
+    color: var(--teal);
+    margin-top: 6px;
+    font-weight: 600;
+  }
+
+  .mockup-kpi .delta.warn { color: var(--orange); }
+
+  .mockup-row {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 14px;
+  }
+
+  .mockup-panel {
+    background: var(--dark-elevated);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 20px;
+  }
+
+  .mockup-panel-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .mockup-panel-title small {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--text-dim);
+    font-weight: 500;
+  }
+
+  .mockup-chart {
+    display: flex;
+    align-items: flex-end;
+    gap: 6px;
+    height: 110px;
+    padding-top: 8px;
+  }
+
+  .mockup-bar {
+    flex: 1;
+    background: var(--teal);
+    border-radius: 3px 3px 0 0;
+    position: relative;
+    min-height: 8px;
+  }
+
+  .mockup-bar.orange {
+    background: var(--orange);
+  }
+
+  .mockup-chart-labels {
+    display: flex;
+    gap: 6px;
+    margin-top: 6px;
+  }
+
+  .mockup-chart-labels span {
+    flex: 1;
+    text-align: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: var(--text-dim);
+  }
+
+  .mockup-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 9px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 12.5px;
+  }
+
+  .mockup-list-item:last-child { border-bottom: none; }
+
+  .mockup-list-item .name { color: var(--text); font-weight: 500; }
+
+  .mockup-list-item .amount {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--teal);
+    font-weight: 600;
+  }
+
+  .mockup-alert {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    background: rgba(245, 158, 11, 0.08);
+    border-left: 2px solid var(--orange);
+    border-radius: 0 6px 6px 0;
+    margin-bottom: 8px;
+    font-size: 12px;
+    color: var(--text);
+  }
+
+  .mockup-alert.teal {
+    background: rgba(127, 211, 194, 0.08);
+    border-left-color: var(--teal);
+  }
+
+  .mockup-alert .dot {
+    width: 6px;
+    height: 6px;
+    background: var(--orange);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .mockup-alert.teal .dot { background: var(--teal); }
+
+  .mockup-caption {
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-dim);
+    margin-top: 22px;
+    font-style: italic;
+  }
+
+  .mockup-tabs {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin: 36px 0 24px;
+    flex-wrap: wrap;
+  }
+
+  .mockup-tab {
+    padding: 10px 18px;
+    border-radius: 100px;
+    border: 1px solid var(--border);
+    background: var(--dark-card);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .mockup-tab.active {
+    background: var(--teal);
+    color: var(--dark);
+    border-color: var(--teal);
+  }
+
+  /* WHATSAPP MOCK */
+  .wa-wrap { max-width: 480px; margin: 40px auto 0; }
+
+  .wa-frame {
+    background: var(--dark-card);
+    border: 1px solid var(--border-bright);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  }
+
+  .wa-head {
+    background: var(--dark-elevated);
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .wa-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--teal);
+    color: var(--dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 15px;
+  }
+
+  .wa-head .who { font-weight: 600; color: var(--text); font-size: 14px; line-height: 1.3; }
+  .wa-head .stat { font-size: 10.5px; color: var(--teal); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.5px; }
+
+  .wa-body {
+    padding: 22px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: var(--dark);
+  }
+
+  .wa-msg {
+    max-width: 80%;
+    padding: 10px 14px;
+    border-radius: 14px;
+    font-size: 13.5px;
+    line-height: 1.5;
+  }
+
+  .wa-in {
+    align-self: flex-start;
+    background: var(--dark-elevated);
+    color: var(--text);
+    border-bottom-left-radius: 4px;
+  }
+
+  .wa-out {
+    align-self: flex-end;
+    background: rgba(127, 211, 194, 0.15);
+    color: var(--text);
+    border: 1px solid rgba(127, 211, 194, 0.25);
+    border-bottom-right-radius: 4px;
+  }
+
+  .wa-time {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: var(--text-dim);
+    margin-top: 4px;
+    display: block;
+    text-align: right;
+  }
+
+  .wa-note {
+    margin-top: 16px;
+    font-size: 13.5px;
+    color: var(--text-muted);
+    background: rgba(245, 158, 11, 0.06);
+    border-left: 2px solid var(--orange);
+    padding: 12px 16px;
+    border-radius: 0 6px 6px 0;
+    line-height: 1.55;
+  }
+
+  .wa-note strong { color: var(--orange); font-weight: 600; }
+
+  /* VIABILIDAD */
+  .viab-intro {
+    background: var(--dark-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px 32px;
+    margin-bottom: 32px;
+  }
+
+  .viab-intro h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--teal);
+    margin-bottom: 12px;
+    letter-spacing: -0.4px;
+  }
+
+  .viab-intro p { font-size: 15.5px; color: var(--text-muted); line-height: 1.65; }
+
+  .viab-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+
+  .viab-card {
+    background: var(--dark-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px 26px;
+  }
+
+  .viab-card .check {
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    background: rgba(127, 211, 194, 0.12);
+    color: var(--teal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    margin-bottom: 16px;
+    font-size: 14px;
+  }
+
+  .viab-card h4 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 8px;
+    letter-spacing: -0.3px;
+  }
+
+  .viab-card p { font-size: 14px; color: var(--text-muted); line-height: 1.55; }
+
+  .viab-card .tech {
+    margin-top: 10px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 0.5px;
+  }
+
+  .viab-disclaimer {
+    margin-top: 28px;
+    padding: 22px 28px;
+    background: rgba(127, 211, 194, 0.05);
+    border-left: 3px solid var(--teal);
+    border-radius: 6px;
+    font-size: 14.5px;
+    color: var(--text-muted);
+    line-height: 1.65;
+  }
+
+  .viab-disclaimer strong { color: var(--teal); font-weight: 600; }
+
+  /* FASE 2 GRID */
+  .next-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+
+  .next-card {
+    background: var(--dark-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 26px 28px;
+    position: relative;
+  }
+
+  .next-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 24px;
+    bottom: 24px;
+    width: 3px;
+    background: var(--orange);
+    border-radius: 0 3px 3px 0;
+  }
+
+  .next-card .tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--orange);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+
+  .next-card h4 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 8px;
+    letter-spacing: -0.3px;
+  }
+
+  .next-card p { font-size: 14px; color: var(--text-muted); line-height: 1.55; }
+
+  /* PRICING */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 24px;
+    margin-top: 8px;
+  }
+
+  .price-card {
+    border-radius: 18px;
+    padding: 36px;
+    position: relative;
+  }
+
+  .price-card.primary {
+    background: rgba(127, 211, 194, 0.06);
+    border: 1px solid rgba(127, 211, 194, 0.4);
+  }
+
+  .price-card.optional {
+    background: var(--dark-card);
+    border: 1px solid var(--border-bright);
+  }
+
+  .price-card .badge {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 100px;
+    margin-bottom: 22px;
+    font-weight: 600;
+  }
+
+  .price-card.primary .badge { background: var(--teal); color: var(--dark); }
+  .price-card.optional .badge { background: rgba(245, 158, 11, 0.15); color: var(--orange); }
+
+  .price-card .name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 22px;
+    letter-spacing: -0.6px;
+  }
+
+  .price-card .price-row {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 4px;
+  }
+
+  .price-card .amount {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 60px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -2px;
+    color: var(--text);
+  }
+
+  .price-card.primary .amount { color: var(--teal); }
+  .price-card .currency { font-size: 22px; color: var(--text-muted); font-weight: 500; }
+  .price-card .period { font-size: 15px; color: var(--text-muted); margin-top: 8px; line-height: 1.45; }
+
+  .price-card .amount-txt {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--orange);
+    letter-spacing: -0.8px;
+    line-height: 1.1;
+  }
+
+  .price-card .terms {
+    list-style: none;
+    margin-top: 28px;
+    padding-top: 22px;
+    border-top: 1px solid var(--border);
+  }
+
+  .price-card .terms li {
+    font-size: 14px;
+    color: var(--text-muted);
+    padding: 6px 0 6px 24px;
+    position: relative;
+    line-height: 1.5;
+  }
+
+  .price-card .terms li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--teal);
+    font-weight: 700;
+    font-size: 13px;
+  }
+
+  .price-card.optional .terms li::before { content: '+'; color: var(--orange); font-size: 15px; top: 5px; }
+
+  .note-warn {
+    margin-top: 28px;
+    padding: 22px 28px;
+    background: rgba(245, 158, 11, 0.06);
+    border-left: 3px solid var(--orange);
+    border-radius: 6px;
+    font-size: 14.5px;
+    color: var(--text-muted);
+    line-height: 1.65;
+  }
+
+  .note-warn strong { color: var(--orange); font-weight: 600; }
+
+  .contract-card {
+    background: var(--dark-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 32px;
+    margin-top: 28px;
+  }
+
+  .contract-card h4 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 22px;
+    letter-spacing: -0.3px;
+  }
+
+  .contract-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+  }
+
+  .contract-item-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 8px;
+  }
+
+  .contract-item-value { font-size: 14.5px; color: var(--text-muted); line-height: 1.5; }
+
+  /* TIMELINE */
+  .timeline { margin-top: 8px; }
+
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 32px;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .timeline-item:last-child { border-bottom: none; }
+
+  .timeline-item .when .pill {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--teal);
+    background: rgba(127, 211, 194, 0.1);
+    padding: 7px 14px;
+    border-radius: 100px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .timeline-item .when .pill.orange { color: var(--orange); background: rgba(245, 158, 11, 0.1); }
+
+  .timeline-item .what h4 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 6px;
+    letter-spacing: -0.3px;
+  }
+
+  .timeline-item .what p { font-size: 14.5px; color: var(--text-muted); line-height: 1.6; }
+
+  .timeline-note {
+    margin-top: 32px;
+    padding: 20px 26px;
+    background: rgba(127, 211, 194, 0.05);
+    border-left: 3px solid var(--teal);
+    border-radius: 6px;
+    font-size: 14.5px;
+    color: var(--text-muted);
+    line-height: 1.65;
+  }
+
+  /* ENLINEA */
+  .enlinea-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+
+  .enlinea-card {
+    background: var(--dark-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px 30px;
+  }
+
+  .enlinea-card .num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--teal);
+    letter-spacing: 2px;
+    margin-bottom: 14px;
+    font-weight: 600;
+  }
+
+  .enlinea-card h4 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 10px;
+    letter-spacing: -0.3px;
+  }
+
+  .enlinea-card p { font-size: 14px; color: var(--text-muted); line-height: 1.55; }
+
+  /* CLOSE */
+  section.close {
+    padding: 100px 0 60px;
+    background: rgba(127, 211, 194, 0.04);
+  }
+
+  .close h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 52px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.08;
+    letter-spacing: -1.6px;
+    margin-bottom: 28px;
+    max-width: 18ch;
+  }
+
+  .close h2 .em { color: var(--teal); }
+
+  .close p.intro {
+    font-size: 18px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    max-width: 820px;
+    font-weight: 300;
+    margin-bottom: 56px;
+  }
+
+  .next-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 16px;
+  }
+
+  .next-step {
+    background: rgba(127, 211, 194, 0.04);
+    border: 1px solid rgba(127, 211, 194, 0.18);
+    border-radius: 14px;
+    padding: 22px 24px;
+  }
+
+  .next-step .step-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--teal);
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+
+  .next-step h4 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 8px;
+    letter-spacing: -0.3px;
+  }
+
+  .next-step p { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+
+  /* FOOTER */
+  .footer-strip {
+    text-align: center;
+    padding: 32px 0 40px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 1.5px;
+    border-top: 1px solid var(--border);
+    background: var(--dark);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .container { padding: 0 28px; }
+    .hero h1 { font-size: 50px; letter-spacing: -1.5px; }
+    .hero-header { flex-direction: column; gap: 32px; align-items: flex-start; }
+    .hero-header .doc-meta { text-align: left; }
+    .hero-meta-grid { grid-template-columns: repeat(2, 1fr); }
+    .diag-grid { grid-template-columns: 1fr; }
+    .compare-grid { grid-template-columns: 1fr; }
+    .pricing-grid { grid-template-columns: 1fr; }
+    .viab-grid { grid-template-columns: 1fr; }
+    .next-grid { grid-template-columns: 1fr; }
+    .enlinea-grid { grid-template-columns: 1fr; }
+    .next-steps { grid-template-columns: repeat(2, 1fr); }
+    .mockup-body { grid-template-columns: 1fr; }
+    .mockup-sidebar { display: none; }
+    .mockup-kpis { grid-template-columns: repeat(2, 1fr); }
+    .mockup-row { grid-template-columns: 1fr; }
+    h2.sec-title { font-size: 34px; letter-spacing: -1px; }
+    .close h2 { font-size: 38px; }
+    .component { grid-template-columns: 50px 1fr; gap: 16px; }
+    .timeline-item { grid-template-columns: 1fr; gap: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-header">
+      <div class="logo-wrap">
+        <img src="enlinea-logo.png" alt="EnLínea Solutions">
+      </div>
+      <div class="doc-meta">
+        <div class="label">Documento</div>
+        <div class="value">Propuesta de sistema clínico</div>
+      </div>
+    </div>
+
+    <span class="hero-tag">Propuesta · Confidencial</span>
+
+    <h1>Sistema operativo <span class="accent">para tu clínica</span></h1>
+
+    <p class="sub">Una capa que vive encima de CliniWeb. Atiende el WhatsApp, ordena la agenda por tipo de procedimiento y te muestra los números de la clínica en una sola pantalla. CliniWeb se queda como expediente. Esto le pone encima la operación que no tiene.</p>
+
+    <div class="for-block">Preparada para</div>
+    <div class="for-name">Clínica de Dermatología y Cosmetología</div>
+    <div class="for-confirm">[ Nombre comercial por confirmar ]</div>
+
+    <div class="hero-meta-grid">
+      <div class="col">
+        <div class="k">Preparada por</div>
+        <div class="v">EnLínea Solutions</div>
+      </div>
+      <div class="col">
+        <div class="k">Fecha</div>
+        <div class="v">29 de mayo de 2026</div>
+      </div>
+      <div class="col">
+        <div class="k">Modalidad</div>
+        <div class="v">Servicio mensual</div>
+      </div>
+      <div class="col">
+        <div class="k">Vigencia</div>
+        <div class="v">30 días desde la fecha de emisión</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIAGNOSTICO -->
+<section>
+  <div class="container">
+    <div class="top-bar">
+      <div class="left"><img src="enlinea-logo.png" alt="EnLínea"><span>EnLínea Solutions</span></div>
+      <div class="right">01 · Diagnóstico</div>
+    </div>
+
+    <span class="sec-label">Diagnóstico</span>
+    <h2 class="sec-title">Lo que <span class="em">entendimos</span></h2>
+    <p class="lede">Tu clínica ya corre. Tiene pacientes, tiene CliniWeb y tiene al equipo trabajando. Lo que pasa es que el WhatsApp se come el día, las citas se caen a último minuto y los números del negocio quedan enterrados en pantallas que hay que abrir una por una. Esta propuesta cubre esa capa.</p>
+
+    <div class="diag-grid">
+      <div class="diag-card">
+        <div class="num">HALLAZGO 01</div>
+        <h3>El WhatsApp se va en preguntas que no agendan</h3>
+        <p>Llega gente preguntando por su tipo de piel, por un jabón, por el acné. Responder eso a mano consume horas y muchas de esas conversaciones nunca terminan en una cita.</p>
+      </div>
+      <div class="diag-card">
+        <div class="num">HALLAZGO 02</div>
+        <h3>Empiezas con dieciséis y atiendes siete</h3>
+        <p>Las citas se confirman llamando una por una y no siempre da el tiempo. El que avisa diez minutos antes deja un espacio muerto que ya no se llena.</p>
+      </div>
+      <div class="diag-card">
+        <div class="num">HALLAZGO 03</div>
+        <h3>La pregunta clínica real no llega a tiempo</h3>
+        <p>Cuando el paciente hace una pregunta que solo el profesional puede responder, rebota entre la asistente y el chat sin llegar a quien debe contestarla.</p>
+      </div>
+      <div class="diag-card">
+        <div class="num">HALLAZGO 04</div>
+        <h3>La agenda mezcla consulta, láser y sueros</h3>
+        <p>CliniWeb no separa una consulta de treinta minutos de un láser de una hora ni de un suero que ocupa la camilla cuarenta y cinco minutos. Por eso se chocan las citas.</p>
+      </div>
+      <div class="diag-card">
+        <div class="num">HALLAZGO 05</div>
+        <h3>Los números del negocio están enterrados</h3>
+        <p>Saber cuál es el procedimiento más rentable o qué se movió este mes obliga a entrar botón por botón. La decisión comercial se toma casi a ciegas.</p>
+      </div>
+      <div class="diag-card">
+        <div class="num">HALLAZGO 06</div>
+        <h3>Se pierde la recurrencia del paciente</h3>
+        <p>El retoque de Botox a los cinco meses, el cumpleaños, el paquete que falta completar. Nada de eso se trabaja solo, así que la recurrencia se pierde.</p>
+      </div>
+    </div>
+
+    <div class="diag-footer">
+      CliniWeb no se reemplaza. <strong>Lo que se construye es la capa que vive encima</strong>, atiende a los pacientes, ordena la agenda y te muestra lo que CliniWeb no te muestra bien.
+    </div>
+  </div>
+</section>
+
+<!-- COMPLEMENTO -->
+<section>
+  <div class="container">
+    <div class="top-bar">
+      <div class="left"><img src="enlinea-logo.png" alt="EnLínea"><span>EnLínea Solutions</span></div>
+      <div class="right">02 · CliniWeb</div>
+    </div>
+
+    <span class="sec-label">Complemento de CliniWeb</span>
+    <h2 class="sec-title">Un complemento, <span class="em">no un reemplazo</span></h2>
+    <p class="lede">Nadie saca CliniWeb. Es donde vive el expediente clínico y es la responsabilidad legal del profesional. EnLínea no toca eso. Trabaja al lado, le quita el trabajo manual y le pasa la cita ya armada.</p>
+
+    <div class="compare-grid">
+      <div class="compare-col">
+        <div class="ctag">Se queda igual</div>
+        <h4>CliniWeb</h4>
+        <ul>
+          <li>El expediente clínico y la historia de cada paciente</li>
+          <li>Las fotos de antes y después como respaldo clínico</li>
+          <li>La agenda médica formal del profesional</li>
+          <li>Todo lo que el equipo ya conoce y usa hoy</li>
+        </ul>
+      </div>
+      <div class="compare-col add">
+        <div class="ctag">Se suma encima</div>
+        <h4>EnLínea</h4>
+        <ul>
+          <li>El WhatsApp que atiende y agenda solo</li>
+          <li>La agenda ordenada por tipo de servicio y por profesional</li>
+          <li>Las confirmaciones automáticas que frenan los espacios muertos</li>
+          <li>La base de pacientes con recordatorios de retoques y cumpleaños</li>
+          <li>El panel con los números del negocio</li>
+          <li>La captura de pacientes por Instagram</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="diag-footer">
+      No migras nada. CliniWeb sigue siendo el expediente y la agenda oficial. <strong>EnLínea se conecta con CliniWeb</strong> para leer la agenda y manejar las citas, así todo pasa por un solo lado y no hay choques.
+    </div>
+  </div>
+</section>
+
+<!-- FASE 1 -->
+<section>
+  <div class="container">
+    <div class="top-bar">
+      <div class="left"><img src="enlinea-logo.png" alt="EnLínea"><span>EnLínea Solutions</span></div>
+      <div class="right">03 · Fase 1</div>
+    </div>
+
+    <span class="sec-label">Fase 1 · Lo esencial</span>
+    <h2 class="sec-title">El sistema, <span class="em">pieza por pieza</span></h2>
+    <p class="lede">Siete piezas que entran juntas en la primera fase. El asistente atiende, la agenda se ordena, las confirmaciones cuidan los espacios y los números quedan a la vista. Todo incluido en la mensualidad.</p>
+
+    <div class="components-grid">
+      <div class="component">
+        <div class="num-box">01</div>
+        <div class="body">
+          <h3>Asistente de WhatsApp que atiende y agenda</h3>
+          <p>Un asistente virtual que conversa natural, como una persona. Resuelve las preguntas administrativas, da los precios, manda el link de horarios o agenda la cita directo en CliniWeb. El objetivo de cada conversación es dejar la cita reservada.</p>
+          <div class="detail">Cuando llega una pregunta que solo el profesional puede responder, no inventa nada. La marca, le avisa al profesional con el contexto y el paciente espera una respuesta humana.</div>
+        </div>
+      </div>
+      <div class="component">
+        <div class="num-box">02</div>
+        <div class="body">
+          <h3>Agenda inteligente por tipo de servicio</h3>
+          <p>Cada servicio entra con su duración real. Una consulta ocupa treinta minutos, un facial una hora, una depilación de axila quince minutos, un suero deja la camilla tomada cuarenta y cinco. La agenda deja de chocar.</p>
+          <div class="detail">Lee la disponibilidad real desde CliniWeb antes de agendar y registra la cita ahí mismo, así CliniWeb es la única agenda y no se chocan dos citas. Separa consulta de procedimiento, ordena por profesional y alimenta también el botón de reservar de tu página web.</div>
+        </div>
+      </div>
+      <div class="component">
+        <div class="num-box">03</div>
+        <div class="body">
+          <h3>Confirmación automática de citas</h3>
+          <p>Un día antes el sistema le escribe al paciente y confirma. Si no responde, vuelve a insistir. El espacio que se iba a caer se libera a tiempo para otro paciente.</p>
+          <div class="detail">Aquí es donde el día deja de empezar con dieciséis citas y terminar atendiendo siete.</div>
+        </div>
+      </div>
+      <div class="component">
+        <div class="num-box">04</div>
+        <div class="body">
+          <h3>Asistente operativo para el profesional</h3>
+          <p>El profesional le habla al sistema por WhatsApp como a una asistente. Bloquéame el jueves de ocho a doce que tengo procedimiento. El sistema bloquea, detecta las citas que caían en ese rango, las reagenda y manda el resumen.</p>
+          <div class="detail">El mismo asistente que atiende a los pacientes le ordena la agenda al profesional sin que nadie lo haga a mano.</div>
+        </div>
+      </div>
+      <div class="component">
+        <div class="num-box">05</div>
+        <div class="body">
+          <h3>Panel con los números de la clínica</h3>
+          <p>Una sola pantalla con lo que importa. Cuántas citas, cuántas se atendieron, cuál es el procedimiento más rentable, qué se movió este mes. Pensado para quien lleva lo comercial y también para quien no es de números.</p>
+          <div class="detail">Los procedimientos se ven como productos. El láser, el Botox, la Ultherapy, cada uno con lo que aporta. Se decide con el dato al frente.</div>
+        </div>
+      </div>
+      <div class="component">
+        <div class="num-box">06</div>
+        <div class="body">
+          <h3>Base de pacientes y recordatorios</h3>
+          <p>La base de pacientes trabajando a tu favor. El retoque de Botox que toca a los seis meses, el cumpleaños con un descuento del mes, el paquete que falta completar. El sistema lo dispara solo.</p>
+          <div class="detail">Esto reemplaza lo que CliniWeb no hace. La recurrencia deja de depender de que alguien se acuerde.</div>
+        </div>
+      </div>
+      <div class="component">
+        <div class="num-box">07</div>
+        <div class="body">
+          <h3>Captura por Instagram</h3>
+          <p>Quien comenta una palabra en una publicación recibe un mensaje directo y pasa a WhatsApp o agenda ahí mismo. Los mensajes y comentarios se atienden de forma automática, conectados al mismo asistente.</p>
+          <div class="detail warn">Instagram es menos abierto que WhatsApp para integraciones externas y Meta cambia sus reglas seguido. Por eso la capa de Instagram se trabaja con lo que la plataforma permite en cada momento y se ajusta cuando Meta cambia.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="svc-block">
+      <div class="svc-label">Cada servicio con su tiempo, ejemplo a definir con la clínica</div>
+      <div class="svc-chips">
+        <span class="chip">Consulta <b>30 min</b></span>
+        <span class="chip">Acné <b>45 min</b></span>
+        <span class="chip">Facial <b>1 h</b></span>
+        <span class="chip">Depilación láser axila <b>15 min</b></span>
+        <span class="chip">IPL rosácea <b>30 min</b></span>
+        <span class="chip">Ultherapy <b>1 a 1.5 h</b></span>
+        <span class="chip">Sueros IV <b>45 min</b></span>
+        <span class="chip">Botox <b>30 min</b></span>
+      </div>
+    </div>
+
+    <div class="fase-plus">
+      <div class="tag">Incluido en Fase 1</div>
+      <h4>Los paquetes</h4>
+      <p>El paquete de dos Botox más un termopen, lo que el paciente compró y lo que le falta por usar. Se ve en una pantalla, no en la memoria de nadie. Así sabes qué paquete se movió y cuál conviene armar el mes siguiente.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROTOTIPO -->
+<section>
+  <div class="container">
+    <div class="top-bar">
+      <div class="left"><img src="enlinea-logo.png" alt="EnLínea"><span>EnLínea Solutions</span></div>
+      <div class="right">04 · Prototipo</div>
+    </div>
+
+    <span class="sec-label">Prototipo</span>
+    <h2 class="sec-title">Cómo se ve <span class="em">el sistema</span></h2>
+    <p class="lede">Así se vería el panel y así conversa el asistente. El panel es completamente personalizable, con los colores y la identidad de la clínica. La estructura y el funcionamiento son los que se ven abajo.</p>
+
+    <div class="mockup-tabs">
+      <div class="mockup-tab active">Panel</div>
+      <div class="mockup-tab">Agenda inteligente</div>
+      <div class="mockup-tab">Pacientes</div>
+      <div class="mockup-tab">Asistente WhatsApp</div>
+    </div>
+
+    <div class="mockup-frame">
+      <div class="mockup-titlebar">
+        <div class="mockup-dots">
+          <div class="mockup-dot"></div>
+          <div class="mockup-dot"></div>
+          <div class="mockup-dot"></div>
+        </div>
+        <div class="mockup-url">panel.tuclinica.com</div>
+      </div>
+
+      <div class="mockup-body">
+        <div class="mockup-sidebar">
+          <div class="mockup-brand">Tu Clínica</div>
+          <div class="mockup-nav-label">Operación</div>
+          <div class="mockup-nav-item active">Panel</div>
+          <div class="mockup-nav-item">Agenda</div>
+          <div class="mockup-nav-item">Conversaciones</div>
+          <div class="mockup-nav-item">Pacientes</div>
+          <div class="mockup-nav-label">Negocio</div>
+          <div class="mockup-nav-item">Procedimientos</div>
+          <div class="mockup-nav-item">Paquetes</div>
+          <div class="mockup-nav-item">Recurrencia</div>
+        </div>
+
+        <div class="mockup-main">
+          <div class="mockup-topline">
+            <div>
+              <div class="mockup-page-title">Resumen del día</div>
+              <div class="mockup-page-sub">Dermatología y Cosmetología · vista consolidada</div>
+            </div>
+            <div class="mockup-date">29 MAY 2026</div>
+          </div>
+
+          <div class="mockup-kpis">
+            <div class="mockup-kpi">
+              <div class="label">Citas de hoy</div>
+              <div class="value">18</div>
+              <div class="delta">14 confirmadas</div>
+            </div>
+            <div class="mockup-kpi">
+              <div class="label">Por confirmar</div>
+              <div class="value">4</div>
+              <div class="delta warn">recordatorio enviado</div>
+            </div>
+            <div class="mockup-kpi">
+              <div class="label">Más rentable del mes</div>
+              <div class="value txt">Láser</div>
+              <div class="delta">31% del ingreso</div>
+            </div>
+            <div class="mockup-kpi">
+              <div class="label">Recurrencia activa</div>
+              <div class="value">23</div>
+              <div class="delta">retoques este mes</div>
+            </div>
+          </div>
+
+          <div class="mockup-row">
+            <div class="mockup-panel">
+              <div class="mockup-panel-title">Procedimientos por día<small>últimos 7 días</small></div>
+              <div class="mockup-chart">
+                <div class="mockup-bar" style="height: 48%"></div>
+                <div class="mockup-bar" style="height: 66%"></div>
+                <div class="mockup-bar" style="height: 40%"></div>
+                <div class="mockup-bar" style="height: 80%"></div>
+                <div class="mockup-bar" style="height: 58%"></div>
+                <div class="mockup-bar orange" style="height: 92%"></div>
+                <div class="mockup-bar" style="height: 54%"></div>
+              </div>
+              <div class="mockup-chart-labels">
+                <span>L</span><span>M</span><span>X</span><span>J</span><span>V</span><span>S</span><span>D</span>
+              </div>
+            </div>
+
+            <div class="mockup-panel">
+              <div class="mockup-panel-title">Más rentables del mes</div>
+              <div class="mockup-list-item">
+                <span class="name">Depilación láser</span>
+                <span class="amount">$4,180</span>
+              </div>
+              <div class="mockup-list-item">
+                <span class="name">Ultherapy</span>
+                <span class="amount">$3,250</span>
+              </div>
+              <div class="mockup-list-item">
+                <span class="name">Botox</span>
+                <span class="amount">$2,740</span>
+              </div>
+              <div class="mockup-list-item">
+                <span class="name">Sueros IV</span>
+                <span class="amount">$1,920</span>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top: 14px;">
+            <div class="mockup-alert teal">
+              <div class="dot"></div>
+              <span>6 pacientes entran en ventana de retoque de Botox este mes, recordatorio programado</span>
+            </div>
+            <div class="mockup-alert">
+              <div class="dot"></div>
+              <span>4 citas sin confirmar para mañana, segundo aviso ya enviado por WhatsApp</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="wa-wrap">
+      <div class="wa-frame">
+        <div class="wa-head">
+          <div class="wa-avatar">C</div>
+          <div>
+            <div class="who">Clínica · Asistente</div>
+            <div class="stat">en línea</div>
+          </div>
+        </div>
+        <div class="wa-body">
+          <div class="wa-msg wa-in">Hola, tengo acné y quiero saber qué me pueden hacer</div>
+          <div class="wa-msg wa-out">Hola, con gusto te ayudo. El acné se trata distinto según el tipo de piel, por eso lo vemos en consulta. La valoración con la dermatóloga dura treinta minutos. ¿Te muestro los horarios libres de esta semana?</div>
+          <div class="wa-msg wa-in">Sí, porfa</div>
+          <div class="wa-msg wa-out">Tengo jueves a las 11 de la mañana o viernes a las 3 de la tarde. ¿Cuál te queda mejor?</div>
+          <div class="wa-msg wa-in">Jueves a las 11</div>
+          <div class="wa-msg wa-out">Listo, te dejé la cita el jueves a las 11. Un día antes te escribo para confirmar.<span class="wa-time">cita agendada</span></div>
+        </div>
+      </div>
+      <div class="wa-note">
+        <strong>Cuando la pregunta es clínica.</strong> Si el paciente pregunta algo que solo el profesional puede responder, por ejemplo si puede tomar un medicamento, el asistente no contesta. Le avisa al profesional con el contexto del paciente y deja que él responda.
+      </div>
+    </div>
+
+    <p class="mockup-caption">Los datos del mockup son ilustrativos. La estructura final, los procedimientos y los números se definen contigo.</p>
+  </div>
+</section>
+
+<!-- VIABILIDAD -->
+<section>
+  <div class="container">
+    <div class="top-bar">
+      <div class="left"><img src="enlinea-logo.png" alt="EnLínea"><span>EnLínea Solutions</span></div>
+      <div class="right">05 · Viabilidad técnica</div>
+    </div>
+
+    <span class="sec-label">Viabilidad técnica</span>
+    <h2 class="sec-title">Esto <span class="em">sí se puede</span> hacer</h2>
+    <p class="lede">Cada pieza de este sistema ya corre con herramientas probadas. El sistema arranca funcionando al lado de CliniWeb, así que no depende de que CliniWeb abra nada para entregarte valor desde el primer mes.</p>
+
+    <div class="viab-intro">
+      <h3>Integración con CliniWeb</h3>
+      <p>EnLínea ya está en conversaciones con CliniWeb sobre las conexiones específicas que este proyecto necesita, agendamiento y expediente. CliniWeb cuenta con conexiones técnicas que pone a disposición de sus clínicas. El sistema se enlaza con CliniWeb para leer la agenda y manejar las citas, de modo que CliniWeb es la única agenda y no hay citas duplicadas ni choques de horario.</p>
+    </div>
+
+    <div class="viab-grid">
+      <div class="viab-card">
+        <div class="check">✓</div>
+        <h4>Asistente de WhatsApp</h4>
+        <p>Conversa, agenda y escala al profesional cuando hace falta. Ya está probado funcionando en otros sistemas de EnLínea.</p>
+        <div class="tech">WhatsApp e inteligencia artificial</div>
+      </div>
+
+      <div class="viab-card">
+        <div class="check">✓</div>
+        <h4>Agenda y link público</h4>
+        <p>Lee las horas libres directamente de CliniWeb y registra la cita ahí mismo, por profesional. El paciente reserva en un link con disponibilidad real.</p>
+        <div class="tech">Conexión directa con CliniWeb</div>
+      </div>
+
+      <div class="viab-card">
+        <div class="check">✓</div>
+        <h4>Confirmaciones y recordatorios</h4>
+        <p>Mensajes automáticos un día antes, segundo aviso si no responde y recordatorios de recurrencia programados.</p>
+        <div class="tech">Mensajes automáticos programados</div>
+      </div>
+
+      <div class="viab-card">
+        <div class="check">✓</div>
+        <h4>Asistente operativo</h4>
+        <p>El profesional bloquea y reagenda hablándole al sistema por WhatsApp. El sistema entiende la instrucción y reorganiza la agenda.</p>
+        <div class="tech">WhatsApp e inteligencia artificial</div>
+      </div>
+
+      <div class="viab-card">
+        <div class="check">✓</div>
+        <h4>Panel y base de pacientes</h4>
+        <p>Citas, procedimientos rentables, paquetes, cumpleaños y retoques, todo en una pantalla y disparándose solo.</p>
+        <div class="tech">Panel en línea propio</div>
+      </div>
+
+      <div class="viab-card">
+        <div class="check">✓</div>
+        <h4>Instagram</h4>
+        <p>Captura por comentarios y mensajes directos, con el flujo de comentario a mensaje directo a WhatsApp.</p>
+        <div class="tech">Instagram, según lo que permite Meta</div>
+      </div>
+    </div>
+
+    <div class="viab-disclaimer">
+      <strong>Honestidad por delante.</strong> La historia clínica se queda en CliniWeb, no se duplica. El alcance exacto del agendamiento automático se cierra con el equipo técnico de CliniWeb al arrancar, según lo que permita su conexión. En cualquier caso, todas las citas pasan por CliniWeb, así que nunca hay dos agendas ni choques de horario.
+    </div>
+  </div>
+</section>
+
+<!-- MODELO COMERCIAL -->
+<section>
+  <div class="container">
+    <div class="top-bar">
+      <div class="left"><img src="enlinea-logo.png" alt="EnLínea"><span>EnLínea Solutions</span></div>
+      <div class="right">06 · Modelo comercial</div>
+    </div>
+
+    <span class="sec-label">Modelo comercial</span>
+    <h2 class="sec-title">Una mensualidad, <span class="em">todo incluido</span></h2>
+    <p class="lede">La clínica no compra un sistema cerrado. Contrata una plataforma con un equipo detrás que sigue trabajando mes a mes. La implementación va incluida, sin cobro de arranque aparte, y el sistema se personaliza todo el tiempo que esté activo.</p>
+
+    <div class="pricing-grid">
+      <div class="price-card primary">
+        <div class="badge">Fase 1</div>
+        <div class="name">Sistema operativo de la clínica</div>
+        <div class="price-row">
+          <span class="currency">$</span>
+          <span class="amount">500</span>
+        </div>
+        <div class="period">por mes, implementación incluida</div>
+        <ul class="terms">
+          <li>Asistente de WhatsApp que atiende y agenda</li>
+          <li>Agenda inteligente por servicio y por profesional</li>
+          <li>Confirmaciones automáticas de citas</li>
+          <li>Asistente operativo para el profesional</li>
+          <li>Panel de números y paquetes</li>
+          <li>Base de pacientes con recordatorios de retoques y cumpleaños</li>
+          <li>Captura de pacientes por Instagram</li>
+          <li>Personalizable durante todo el tiempo que esté activo</li>
+        </ul>
+      </div>
+
+      <div class="price-card optional">
+        <div class="badge">Incluido</div>
+        <div class="name">Personalización total</div>
+        <div class="amount-txt">Sin costo extra</div>
+        <div class="period">va dentro de la mensualidad, no se cobra aparte</div>
+        <ul class="terms">
+          <li>Panel personalizable con los colores y la identidad de la clínica</li>
+          <li>Ajustes incluidos mientras el sistema esté activo</li>
+          <li>Integraciones a medida según lo que la clínica use</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="note-warn">
+      <strong>Servicios de terceros.</strong> Las herramientas externas que cobran aparte, como ManyChat para Instagram o el envío de mensajes de WhatsApp, las paga la clínica directamente a cada proveedor. La mensualidad de EnLínea cubre el desarrollo, la operación y el soporte del sistema, no las suscripciones de terceros.
+    </div>
+
+    <div class="contract-card">
+      <h4>Sobre el acuerdo</h4>
+      <div class="contract-grid">
+        <div>
+          <div class="contract-item-label">Arranque</div>
+          <div class="contract-item-value">Primero el mapeo y el diseño de la primera interfaz, después la Fase 1 entra en producción.</div>
+        </div>
+        <div>
+          <div class="contract-item-label">Personalización</div>
+          <div class="contract-item-value">El sistema se ajusta a la clínica todo el tiempo que esté activo, dentro del alcance de Fase 1.</div>
+        </div>
+        <div>
+          <div class="contract-item-label">Servicios de terceros</div>
+          <div class="contract-item-value">Las suscripciones externas como ManyChat corren por cuenta de la clínica.</div>
+        </div>
+        <div>
+          <div class="contract-item-label">Propiedad de la data</div>
+          <div class="contract-item-value">La data de los pacientes es de la clínica y se entrega cuando la pidas.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IMPLEMENTACION -->
+<section>
+  <div class="container">
+    <div class="top-bar">
+      <div class="left"><img src="enlinea-logo.png" alt="EnLínea"><span>EnLínea Solutions</span></div>
+      <div class="right">07 · Implementación</div>
+    </div>
+
+    <span class="sec-label">Implementación</span>
+    <h2 class="sec-title">Cómo <span class="em">arrancamos</span></h2>
+    <p class="lede">La Fase 1 se trabaja por etapas con entregables concretos. Primero se diseña y se mapea, después el sistema entra a operar. Cada etapa avanza cuando lo entregado queda validado por la clínica.</p>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="when"><span class="pill">Etapa 1</span></div>
+        <div class="what">
+          <h4>Confirmación y acuerdo</h4>
+          <p>Se confirma este documento y EnLínea emite el acuerdo de servicio con el alcance de Fase 1 y la mensualidad.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="when"><span class="pill">Etapa 2</span></div>
+        <div class="what">
+          <h4>Mapeo de la clínica e integración</h4>
+          <p>Se levantan los servicios con su duración, los profesionales, los precios, los horarios y las respuestas tipo del WhatsApp, y se cierra con el equipo técnico de CliniWeb el alcance de la conexión. Entregable, el mapa de configuración de la clínica.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="when"><span class="pill">Etapa 3</span></div>
+        <div class="what">
+          <h4>Diseño de la primera interfaz</h4>
+          <p>Primeras pantallas del panel y de la agenda, listas para recorrer y ajustadas a la identidad de la clínica. Entregable, prototipo aprobado.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="when"><span class="pill orange">Etapa 4</span></div>
+        <div class="what">
+          <h4>Arranque de Fase 1</h4>
+          <p>El asistente de WhatsApp, la agenda inteligente y las confirmaciones entran a operar con los pacientes reales de la clínica.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="when"><span class="pill">Etapa 5</span></div>
+        <div class="what">
+          <h4>Pacientes, panel y paquetes</h4>
+          <p>Se activan los números, la recurrencia y los paquetes. La captura por Instagram queda conectada al mismo asistente.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="when"><span class="pill">Continuo</span></div>
+        <div class="what">
+          <h4>Operación y ajustes</h4>
+          <p>Sistema vivo, soporte activo y ajustes dentro del alcance del servicio.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-note">
+      Los tiempos finos por etapa se afinan al arrancar, según los servicios y horarios reales de la clínica. EnLínea trabaja contra entregables, avances navegables en pantalla, no presentaciones.
+    </div>
+  </div>
+</section>
+
+<!-- ENLINEA -->
+<section>
+  <div class="container">
+    <div class="top-bar">
+      <div class="left"><img src="enlinea-logo.png" alt="EnLínea"><span>EnLínea Solutions</span></div>
+      <div class="right">08 · Quiénes</div>
+    </div>
+
+    <span class="sec-label">EnLínea Solutions</span>
+    <h2 class="sec-title">Quién <span class="em">construye esto</span></h2>
+    <p class="lede">EnLínea Solutions diseña y opera sistemas internos para negocios que ya están andando y necesitan que la tecnología trabaje a su favor. El foco son los procesos, las integraciones y los flujos.</p>
+
+    <div class="enlinea-grid">
+      <div class="enlinea-card">
+        <div class="num">01</div>
+        <h4>Procesos primero</h4>
+        <p>Antes de tocar código se mapea cómo trabaja la clínica de verdad. Sin eso, cualquier sistema repite el problema en pantalla.</p>
+      </div>
+      <div class="enlinea-card">
+        <div class="num">02</div>
+        <h4>Integraciones nativas</h4>
+        <p>EnLínea trabaja sobre WhatsApp e Instagram y se enlaza con CliniWeb. Sin migraciones forzadas.</p>
+      </div>
+      <div class="enlinea-card">
+        <div class="num">03</div>
+        <h4>Flujos automatizados</h4>
+        <p>Cada flujo queda corriendo y documentado. La idea no es atarte a un proveedor, es que la clínica gane capacidad.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CIERRE -->
+<section class="close">
+  <div class="container">
+    <div class="top-bar">
+      <div class="left"><img src="enlinea-logo.png" alt="EnLínea"><span>EnLínea Solutions</span></div>
+      <div class="right">09 · Próximo paso</div>
+    </div>
+
+    <h2>Listos para <span class="em">arrancar</span></h2>
+    <p class="intro">Cuando confirmas este documento, EnLínea emite el acuerdo y arranca el mapeo y el diseño de la primera interfaz para poner la Fase 1 en producción.</p>
+
+    <div class="next-steps">
+      <div class="next-step">
+        <div class="step-num">PASO 01</div>
+        <h4>Confirmación</h4>
+        <p>Revisas la propuesta y das el visto bueno al alcance de Fase 1.</p>
+      </div>
+      <div class="next-step">
+        <div class="step-num">PASO 02</div>
+        <h4>Acuerdo de servicio</h4>
+        <p>Documento con alcance, mensualidad y condiciones del servicio.</p>
+      </div>
+      <div class="next-step">
+        <div class="step-num">PASO 03</div>
+        <h4>Mapeo y diseño</h4>
+        <p>Se levanta la clínica y se diseña la primera interfaz.</p>
+      </div>
+      <div class="next-step">
+        <div class="step-num">PASO 04</div>
+        <h4>Producción Fase 1</h4>
+        <p>El sistema entra a operar con los pacientes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="footer-strip">
+  EnLínea Solutions · Propuesta confidencial · Vigencia 30 días desde la fecha de emisión
+</div>
+
+</body>
+</html>
